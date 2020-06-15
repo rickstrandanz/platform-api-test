@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace platform_api.Controllers
 {
@@ -29,7 +30,7 @@ namespace platform_api.Controllers
                             LastCommitSHA = "...",
                             Description = "Platform api test - Version" };
 
-            var json = JsonConvert.SerializeObject(version);
+            var json = JsonSerializer.Serialize(version);
 
             return  Content(json,"application/json;", Encoding.UTF8);
         }
