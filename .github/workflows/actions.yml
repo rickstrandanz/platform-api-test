@@ -25,6 +25,8 @@ jobs:
       run: dotnet build --configuration Release --no-restore --version-suffix $GITHUB_SHA    
     - name: Run integration tests
       run: dotnet test --no-restore --verbosity normal
+    - name: Test passing action variable to Dockerfile
+      run: docker build -t platform-api:latest --build-arg GITSHA=$GITHUB_SHA
     - name: Build and push Docker image
       uses: docker/build-push-action@v1.1.0
       env:
