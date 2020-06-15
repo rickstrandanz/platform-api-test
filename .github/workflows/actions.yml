@@ -35,5 +35,5 @@ jobs:
         path: platform-api/
         repository: rickstrand/rickstrand
         tags: latest
-        build-arg: GITSHA
+        buildargs: GITSHA
         push: true   
