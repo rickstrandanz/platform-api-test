@@ -28,7 +28,7 @@ jobs:
       with: 
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
-        path: ./platform-api/
+        path: platform-api/
         repository: rickstrand/rickstrand
         tags: latest
         push: true   
