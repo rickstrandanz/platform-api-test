@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore --version-suffix $GITHUB_SHA"    
+      run: dotnet build --configuration Release --no-restore --version-suffix $GITHUB_SHA    
     - name: Run integration tests
       run: dotnet test --no-restore --verbosity normal
     - name: Build and push Docker image
