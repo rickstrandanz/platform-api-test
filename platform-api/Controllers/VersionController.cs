@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Reflection;
 
 namespace platform_api.Controllers
 {
@@ -25,9 +26,12 @@ namespace platform_api.Controllers
         [HttpGet]
         public ContentResult Get()
         {
+            var assemblyInfo = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+
+
             var version = new Version() { 
-                            ApplicationVersion = "0",
-                            LastCommitSHA = "...",
+                            ApplicationVersion = assemblyInfo.Contains('-') ? assemblyInfo.Split('-')[0] : assemblyInfo,
+                            LastCommitSHA = assemblyInfo.Contains('-') ? assemblyInfo.Split('-')[1] : "",
                             Description = "Platform api test - Version" };
 
             var json = JsonSerializer.Serialize(version);
