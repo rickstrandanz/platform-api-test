@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -11,6 +12,7 @@ namespace platform_api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    //[Produces("application/json")]
     public class VersionController : ControllerBase
     {
         private readonly ILogger<VersionController> _logger;
@@ -21,7 +23,7 @@ namespace platform_api.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public ContentResult Get()
         {
             var version = new Version() { 
                             ApplicationVersion = "0",
@@ -30,7 +32,7 @@ namespace platform_api.Controllers
 
             var json = JsonSerializer.Serialize(version);
 
-            return new JsonResult(json);
+            return  Content(json,"application/json;", Encoding.UTF8);
         }
     }
 }
