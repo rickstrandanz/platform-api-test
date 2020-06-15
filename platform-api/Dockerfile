@@ -3,7 +3,8 @@ WORKDIR /src
 COPY platform-api.csproj .
 RUN dotnet restore
 COPY . .
-RUN dotnet publish -c release -o /app
+ARG GITSHA
+RUN dotnet publish -c release -o /app --version-suffix $GITSHA
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app

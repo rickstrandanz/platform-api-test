@@ -23,14 +23,17 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore --version-suffix $GITHUB_SHA    
-    #- name: Run integration tests
-    #  run: dotnet test --no-restore --verbosity normal
+    - name: Run integration tests
+      run: dotnet test --no-restore --verbosity normal
     - name: Build and push Docker image
       uses: docker/build-push-action@v1.1.0
+      env:
+        GITSHA: $GITHUB_SHA
       with: 
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
         path: platform-api/
         repository: rickstrand/rickstrand
         tags: latest
+        buildargs: GITSHA
         push: true   
