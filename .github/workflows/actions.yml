@@ -23,12 +23,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore      
     - name: Run integration tests
       run: dotnet test --no-restore --verbosity normal
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v1.1.0
-      with: 
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-        path: platform-api/
-        repository: rickstrand/rickstrand
-        tags: latest
-        push: true      
+   
