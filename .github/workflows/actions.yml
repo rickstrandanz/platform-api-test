@@ -33,5 +33,5 @@ jobs:
         path: platform-api/
         repository: rickstrand/rickstrand
         tags: latest
-        build_args: GITSHA="$GITHUB_SHA"
+        build_args: GITSHA=${{ github.sha }}
         push: true   
