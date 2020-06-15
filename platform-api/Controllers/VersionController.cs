@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace platform_api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    //[Produces("application/json")]
     public class VersionController : ControllerBase
     {
         private readonly ILogger<VersionController> _logger;
@@ -28,7 +28,7 @@ namespace platform_api.Controllers
                             LastCommitSHA = "...",
                             Description = "Platform api test - Version" };
 
-            var json = JsonSerializer.Serialize(version);
+            var json = JsonConvert.SerializeObject(version);
 
             return new JsonResult(json);
         }
