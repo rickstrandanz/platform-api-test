@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace platform_api.Controllers
 {
@@ -21,7 +22,7 @@ namespace platform_api.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public ContentResult Get()
         {
             var version = new Version() { 
                             ApplicationVersion = "0",
@@ -30,7 +31,7 @@ namespace platform_api.Controllers
 
             var json = JsonConvert.SerializeObject(version);
 
-            return new JsonResult(json);
+            return  Content(json,"application/json;", Encoding.UTF8);
         }
     }
 }
