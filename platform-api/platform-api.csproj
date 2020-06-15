@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>platform_api</RootNamespace>
+	<Version>1.0</Version>
   </PropertyGroup>
-
+	<Target Name="MyPreCompileTarget" BeforeTargets="Build">
+	</Target>
 </Project>

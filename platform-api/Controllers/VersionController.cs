@@ -25,8 +25,9 @@ namespace platform_api.Controllers
         [HttpGet]
         public ContentResult Get()
         {
+            
             var version = new Version() { 
-                            ApplicationVersion = "0",
+                            ApplicationVersion = GetType().Assembly.GetName().Version.ToString(),
                             LastCommitSHA = "...",
                             Description = "Platform api test - Version" };
 
