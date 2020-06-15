@@ -1,6 +1,6 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 ARG GITSHA=TEST
 RUN echo "GITSHA is ${GITSHA}"
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 COPY platform-api.csproj .
 RUN dotnet restore
