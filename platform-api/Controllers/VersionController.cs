@@ -30,8 +30,8 @@ namespace platform_api.Controllers
 
 
             var version = new Version() { 
-                            ApplicationVersion = assemblyInfo.Split('-')[0],
-                            LastCommitSHA = assemblyInfo.Split('-')[1],
+                            ApplicationVersion = assemblyInfo.Contains('-') ? assemblyInfo.Split('-')[0] : assemblyInfo,
+                            LastCommitSHA = assemblyInfo.Contains('-') ? assemblyInfo.Split('-')[1] : "",
                             Description = "Platform api test - Version" };
 
             var json = JsonSerializer.Serialize(version);
