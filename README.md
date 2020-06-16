@@ -72,6 +72,46 @@ Now listening on: http://localhost:5000
 
 This means the API has started successfully and now you can access it on `http://localhost:5000/version`
 
+#### 2.3 Kubernetes
+
+*NOTE:* For this you will need to have `git`, `.Net Core Runtime` and `.Net Core SDK` installed and configured on your machine.
+
+Clone the repo
+
+```
+git clone https://github.com/rick-strand/platform-api-test.git
+```
+
+From the root of the project
+```
+cd platform-api
+```
+
+Create the deployment in Kubernetes
+```
+kubectl create -f deployment.yaml
+```
+
+Create the service in Kubernetes
+```
+kubectl create -f service.yaml
+```
+
+Create the namespace in Kubernetes
+```
+kubectl create -f namespace-technical-test.json
+```
+
+Add the deployment to the namespace "technical-test" in Docker Desktop
+```
+kubectl config set-context technical-test --namespace=technical-test --cluster=docker-desktop --user=docker-desktop 
+```
+
+Check to see that the deployment of the app is in the namespace "technical-test"
+```
+kubectl config view
+```
+
 
 ### 3 CI Pipeline and Versioning
 
