@@ -128,6 +128,6 @@ This project has Github Actions CI/CD pipeline enabled to build the application 
 - Security: SSL, Api key etc.
 - Currently when a pull request is made it builds, tests and deploys to Docker Hub. I'll need to figure how to ensure builds and tests are run but only deploy to Docker Hub upon a successful merge to master. 
 
-It was good fun working on this little project!
+It was good fun working on this little project! 
 
 
